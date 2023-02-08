@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 10px;
+}
+
+header {
+  padding: 50px 150px;
+  background-color: #fafafa;
+  border-top: 1px solid #86868670;
+  border-bottom: 1px solid #86868670;
+}
+
+h1 {
+  font-size: 3.7rem;
+  font-weight: 700;
+}
+
+h5 {
+  color: #868686;
+  font-weight: 400;
+  font-size: 1.7rem;
+  padding-top: 10px;
+}
+nav {
+  padding: 30px 150px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 3.5rem;
+  padding: 0;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.788);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+nav ul a:hover {
+  color: #868686;
+}
+
+img {
+  width: 100%;
+}
+
+.content {
+  padding: 50px 150px;
+  display: flex;
+  gap: 60px;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+}
+
+main p {
+  color: #868686;
+  font-size: 1.3rem;
+}
+
+.small > *,
+.large > * {
+  padding: 10px;
+}
+
+.large p {
+  font-size: 1.7rem;
+}
+
+.large {
+  max-width: 63rem;
+}
+
+.logos a img {
+  max-width: 8vw;
+  width: 100%;
+  padding-top: 18px;
+  transition: 0.3s ease-in-out;
+}
+
+.logos a img:hover {
+  transform: scale(1.2);
+}
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+footer {
+  background-color: #6736cd;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 150px 50px;
+}
+
+footer > div {
+  width: 200px;
+  color: #fafafa;
+}
+
+h3 {
+  font-size: 2rem;
+  padding-bottom: 10px;
+  padding-top: 50px;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #fafafa;
+  font-size: 2rem;
+}
+
+footer li {
+  padding: 10px;
+  padding-left: 0;
+  border-top: 1px solid #7a59c479;
+}
+
+footer li:hover {
+  padding-left: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+li:first-child {
+  border: none;
+}
+
+strong {
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+@media screen and (max-width: 700px) {
+  nav ul,
+  .content,
+  footer {
+    display: block;
+  }
+
+  header,
+  nav,
+  .content,
+  footer {
+    padding: 50px;
+  }
+
+  .content:nth-child(3) {
+    padding-top: 0;
+  }
+
+  img {
+    min-width: 4rem;
+  }
+}
