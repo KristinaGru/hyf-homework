@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework Form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Shopity Shop</h1>
+    <h2>Checkout</h2>
+    <header>
+      <h3>Order Summary</h3>
+      <div class="total"><span>Total</span><span>$333/month</span></div>
+      <div class="total">
+        <span class="bold">Total</span><span class="bold">$100</span>
+      </div>
+    </header>
+    <form name="checkout" action="/" method="get">
+      <h4>Payment Method</h4>
+      <div class="form-row">
+        <div class="rectangle">
+          <input
+            id="card"
+            type="radio"
+            name="payment-method"
+            value="credit/debit"
+            checked />
+          <label for="card"
+            ><img src="cards.png" alt="payment cards" /><span
+              >Credit/Debit</span
+            ></label
+          >
+        </div>
+        <div class="rectangle">
+          <input
+            id="paypal"
+            type="radio"
+            name="payment-method"
+            value="paypal" />
+          <label for="paypal"
+            ><img src="paypal.png" alt="paypal" /><span>Paypal</span></label
+          >
+        </div>
+      </div>
+      <h4>Card Info</h4>
+      <div class="form-grid">
+        <div class="card-info first">
+          <label for="card-number">Card Number</label>
+          <input
+            id="card-number"
+            type="text"
+            name="card-number"
+            maxlength="19"
+            placeholder="1234 1234 1234 1234"
+            pattern="\d{4} \d{4} \d{4} \d{4}"
+            inputmode="numeric"
+            required />
+        </div>
+        <div class="card-info">
+          <label for="expiry-date">Expiry Date</label>
+          <input
+            id="expiry-date"
+            type="text"
+            placeholder="MM / YY"
+            onfocus="(this.type='month')"
+            name="expiry-date"
+            min="2023-01"
+            required />
+        </div>
+        <div class="card-info">
+          <label for="cvv">Security Code</label>
+          <input
+            id="cvv"
+            type="text"
+            name="cvv"
+            minlength="3"
+            maxlength="3"
+            placeholder="CVV"
+            pattern="\d*"
+            inputmode="numeric"
+            required />
+        </div>
+      </div>
+      <div class="form-row">
+        <button>Buy Now</button>
+      </div>
+      <a href="#">Need Help?</a>
+    </form>
+  </body>
+</html>
