@@ -13,23 +13,32 @@ console.log('I will be ' + age + ' years old in ' + yearFuture);
 
 // Goodboy-Oldboy (A dog age calculator)
 
-const dogYearOfBirth = prompt('What is your dogs year of birth?');
+const dogYearOfBirth = +prompt('What is your dogs year of birth?');
 const dogYearFuture = 2027;
 const dogYears = dogYearFuture - dogYearOfBirth;
 const shouldShowResultInDogYears = prompt(
   'Would you like the result to be shown in dog years? Type either "Yes" or "No"'
 ).toLowerCase();
 
-if (shouldShowResultInDogYears === 'yes') {
-  console.log(
-    'Your dog will be ' + dogYears * 7 + ' dog years old in ' + dogYearFuture
-  );
-} else if (shouldShowResultInDogYears === 'no') {
-  console.log(
-    'Your dog will be ' + dogYears + ' human years old in ' + dogYearFuture
-  );
+if (
+  isNaN(dogYearOfBirth) ||
+  dogYearOfBirth > 2023 ||
+  dogYearOfBirth < 1990 ||
+  dogYearOfBirth == null
+) {
+  console.log('Dogs birth year input invalid');
 } else {
-  console.log('Input invalid');
+  if (shouldShowResultInDogYears === 'yes') {
+    console.log(
+      'Your dog will be ' + dogYears * 7 + ' dog years old in ' + dogYearFuture
+    );
+  } else if (shouldShowResultInDogYears === 'no') {
+    console.log(
+      'Your dog will be ' + dogYears + ' human years old in ' + dogYearFuture
+    );
+  } else {
+    console.log('Input invalid');
+  }
 }
 
 // Housey pricey (A house price estimator)
@@ -102,9 +111,5 @@ const startupName =
   secondWords[Math.floor(Math.random() * 10)];
 
 console.log(
-  'The startup: "' +
-    startupName +
-    '" contains ' +
-    startupName.length +
-    ' characters'
+  `The startup: "${startupName}" contains ${startupName.length} characters`
 );
