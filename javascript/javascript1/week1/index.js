@@ -9,7 +9,7 @@ const yearOfBirth = 1996;
 const yearFuture = 2027;
 const age = yearFuture - yearOfBirth;
 
-console.log('You will be ' + age + ' years old in ' + yearFuture);
+console.log('I will be ' + age + ' years old in ' + yearFuture);
 
 // Goodboy-Oldboy (A dog age calculator)
 
@@ -67,3 +67,44 @@ if (juliasHouseWorth > 1000000) {
 } else {
   console.log('Julia is paying exactly how much the house is worth');
 }
+
+// Ez Namey (Startup name generator)
+
+const firstWords = [
+  'Easy',
+  'Awesome',
+  'Charming',
+  'Kind',
+  'Excellent',
+  'Fabulous',
+  'Amazing',
+  'Unique',
+  'Incredible',
+  'Stunning',
+];
+
+const secondWords = [
+  'Corporate',
+  'Company',
+  'Enterprise',
+  'Firm',
+  'Agency',
+  'Organization',
+  'Institution',
+  'Association',
+  'Corp.',
+  'Establishment',
+];
+
+const startupName =
+  firstWords[Math.floor(Math.random() * 10)] +
+  ' ' +
+  secondWords[Math.floor(Math.random() * 10)];
+
+console.log(
+  'The startup: "' +
+    startupName +
+    '" contains ' +
+    startupName.length +
+    ' characters'
+);
