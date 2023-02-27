@@ -31,3 +31,39 @@ if (shouldShowResultInDogYears === 'yes') {
 } else {
   console.log('Input invalid');
 }
+
+// Housey pricey (A house price estimator)
+
+const petersHouseWidth = 8;
+const petersHouseDepth = 10;
+const petersHouseHeight = 10;
+const petersHouseGarden = 100;
+const petersHouseVolumeInMeters =
+  petersHouseWidth * petersHouseDepth * petersHouseHeight;
+const petersHouseWorth =
+  petersHouseVolumeInMeters * 2.5 * 1000 + petersHouseGarden * 300;
+
+if (petersHouseWorth > 2500000) {
+  console.log('Peter is paying too little for his house');
+} else if (petersHouseWorth < 2500000) {
+  console.log('Peter is paying too much for his house');
+} else {
+  console.log('Peter is paying exactly how much the house is worth');
+}
+
+const juliasHouseWidth = 5;
+const juliasHouseDepth = 11;
+const juliasHouseHeight = 8;
+const juliasHouseGarden = 70;
+const juliasHouseVolumeInMeters =
+  juliasHouseWidth * juliasHouseDepth * juliasHouseHeight;
+const juliasHouseWorth =
+  juliasHouseVolumeInMeters * 2.5 * 1000 + juliasHouseGarden * 300;
+
+if (juliasHouseWorth > 1000000) {
+  console.log('Julia is paying too little for her house');
+} else if (juliasHouseWorth < 1000000) {
+  console.log('Julia is paying too much for her house');
+} else {
+  console.log('Julia is paying exactly how much the house is worth');
+}
