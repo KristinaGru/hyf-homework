@@ -1,14 +1,30 @@
 // Flight booking fullname function
 
-function getFullName(firstName, surname, useFormalName, gender) {
-  if (useFormalName && gender === 'male') {
+function getFullName(firstName, surname, gender) {
+  if (
+    firstName === '' ||
+    typeof firstName != 'string' ||
+    surname === '' ||
+    typeof surname != 'string'
+  ) {
+    alert('Enter a valid name and surname');
+  } else if (gender === 'male') {
     return `Lord ${firstName} ${surname}`;
-  } else if (useFormalName && gender === 'female') {
+  } else if (gender === 'female') {
     return `Miss ${firstName} ${surname}`;
   } else {
     return `${firstName} ${surname}`;
   }
 }
+
+const button = document.getElementById('btn');
+
+button.addEventListener('click', () => {
+  const name1 = document.getElementById('name1');
+  const surname1 = document.getElementById('surname1');
+  const gender1 = document.querySelector('input[name="gender"]:checked');
+  console.log(getFullName(name1.value, surname1.value, gender1.value));
+});
 
 const fullname1 = getFullName('John', 'Smith');
 const fullname2 = getFullName('Jane', 'Doe', true, 'female');
