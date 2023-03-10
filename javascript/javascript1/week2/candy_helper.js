@@ -20,8 +20,7 @@ function addCandy(candyType, candyWeight) {
   }
 }
 
-let amountToSpend = Math.random() * 100;
-amountToSpend = Math.round(amountToSpend * 100) / 100;
+const amountToSpend = Math.round(Math.random() * 10000) / 100;
 
 function canBuyMoreCandy(prices) {
   let i = 0;
@@ -30,26 +29,22 @@ function canBuyMoreCandy(prices) {
     sum += prices[i];
     i++;
   }
-  if (sum < amountToSpend) {
-    return 'You can buy more, so please do!';
-  } else {
-    return 'Enough candy for you!';
-  }
+  return sum < amountToSpend
+    ? 'You can buy more, so please do!'
+    : 'Enough candy for you!';
 }
 
 window.onload = () => {
   const paragraph = document.getElementById('spend');
   paragraph.textContent = ` You can spend ${amountToSpend} DKK`;
+  const candyButton = document.getElementById('candy-btn');
+  candyButton.addEventListener('click', () => {
+    const container = document.getElementById('candy');
+    const candy = document.querySelector('input[name="candy"]:checked').value;
+    const weight = +document.getElementById('candy-weight').value;
+    addCandy(candy, weight);
+    const buyMore = document.createElement('div');
+    buyMore.textContent = canBuyMoreCandy(boughtCandyPrices);
+    container.appendChild(buyMore);
+  });
 };
-
-const candyButton = document.getElementById('candy-btn');
-
-candyButton.addEventListener('click', () => {
-  const container = document.getElementById('candy');
-  const candy = document.querySelector('input[name="candy"]:checked').value;
-  const weight = +document.getElementById('candy-weight').value;
-  addCandy(candy, weight);
-  const buyMore = document.createElement('div');
-  buyMore.textContent = canBuyMoreCandy(boughtCandyPrices);
-  container.appendChild(buyMore);
-});

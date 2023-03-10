@@ -3,9 +3,11 @@
 function getFullName(firstName, surname, gender) {
   if (
     firstName === '' ||
-    typeof firstName != 'string' ||
+    typeof firstName !== 'string' ||
+    !firstName.trim() ||
     surname === '' ||
-    typeof surname != 'string'
+    typeof surname !== 'string' ||
+    !surname.trim()
   ) {
     alert('Enter a valid name and surname');
   } else if (gender === 'male') {
@@ -19,7 +21,7 @@ function getFullName(firstName, surname, gender) {
 
 const formal1 = document.getElementById('formal');
 formal1.addEventListener('click', () => {
-  const radio = document.querySelector('.radios');
+  const radio = document.getElementById('radios1');
   if (formal1.checked) {
     radio.innerHTML =
       "<input type='radio' name='gender1' value='female' checked />Female <input type='radio' name='gender1' value='male' />Male ";
@@ -30,7 +32,7 @@ formal1.addEventListener('click', () => {
 
 const formal2 = document.getElementById('formal2');
 formal2.addEventListener('click', () => {
-  const radio1 = document.querySelectorAll('.radios')[1];
+  const radio1 = document.getElementById('radios2');
   if (formal2.checked) {
     radio1.innerHTML =
       "<input type='radio' name='gender2' value='female' checked />Female <input type='radio' name='gender2' value='male' />Male ";
@@ -45,21 +47,15 @@ button.addEventListener('click', () => {
   const name1 = document.getElementById('name1');
   const surname1 = document.getElementById('surname1');
   const gender1 = document.querySelector('input[name="gender1"]:checked');
-  let fullname1;
-  if (!gender1) {
-    fullname1 = getFullName(name1.value, surname1.value);
-  } else {
-    fullname1 = getFullName(name1.value, surname1.value, gender1.value);
-  }
+  const fullname1 = !gender1
+    ? getFullName(name1.value, surname1.value)
+    : getFullName(name1.value, surname1.value, gender1.value);
   const name2 = document.getElementById('name2');
   const surname2 = document.getElementById('surname2');
   const gender2 = document.querySelector('input[name="gender2"]:checked');
-  let fullname2;
-  if (!gender2) {
-    fullname2 = getFullName(name2.value, surname2.value);
-  } else {
-    fullname2 = getFullName(name2.value, surname2.value, gender2.value);
-  }
+  const fullname2 = !gender2
+    ? getFullName(name2.value, surname2.value)
+    : getFullName(name2.value, surname2.value, gender2.value);
 
   const paragraph = document.querySelector('p');
   if (typeof fullname1 !== 'undefined' && typeof fullname2 !== 'undefined') {
