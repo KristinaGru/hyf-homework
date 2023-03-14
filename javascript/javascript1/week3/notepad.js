@@ -9,6 +9,8 @@ saveNote('Pick up groceries', 1);
 saveNote('Do laundry', 2);
 saveNote('Do homework', 3);
 
+console.log(notes);
+
 function getNote(id) {
   for (const item of notes) {
     if (!id || isNaN(id)) {

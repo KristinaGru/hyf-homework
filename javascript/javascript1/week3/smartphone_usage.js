@@ -32,13 +32,15 @@ function showStatus(arr, limit) {
 showStatus(activities, 50);
 
 function calcLongestActivity(activities) {
-  let longest = 0;
+  let longestDuration = 0;
+  let longestActivity;
   for (const item of activities) {
-    if (item.duration > longest) {
-      longest = item.duration;
+    if (item.duration > longestDuration) {
+      longestDuration = item.duration;
+      longestActivity = item.activity;
     }
   }
-  return longest;
+  return `Your longest activity was using ${longestActivity}. It took ${longestDuration} minutes.`;
 }
 
 console.log(calcLongestActivity(activities));
