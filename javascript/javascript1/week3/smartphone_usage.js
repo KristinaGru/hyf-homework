@@ -22,7 +22,7 @@ function showStatus(arr, limit) {
     }
   }
   console.log(
-    `You have added ${+activitiesToday} activities for today. They amount to ${duration} min. of usage`
+    `You have added ${activitiesToday} activities for today. They amount to ${duration} min. of usage`
   );
   if (duration >= limit) {
     console.log('You have reached your limit, no more smartphoning for you!');

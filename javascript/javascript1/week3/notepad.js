@@ -12,13 +12,9 @@ saveNote('Do homework', 3);
 console.log(notes);
 
 function getNote(id) {
-  for (const item of notes) {
-    if (!id || isNaN(id)) {
-      console.log('Error! Input a number');
-    } else if (item.id === id) {
-      return item;
-    }
-  }
+  return isNaN(id)
+    ? 'Error! Input a number'
+    : notes.find((element) => element.id === id);
 }
 
 console.log(getNote(1));
@@ -35,7 +31,7 @@ logOutNotesFormatted();
 
 function deleteNote(id) {
   for (const item of notes) {
-    if (!id || isNaN(id)) {
+    if (isNaN(id)) {
       console.log('Error! Input a number');
     } else if (item.id === id) {
       const index = notes.indexOf(item);
