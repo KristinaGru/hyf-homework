@@ -2,7 +2,9 @@ let userName;
 const todo = [];
 
 function getReply(command) {
-  command = command.toLowerCase();
+  if (typeof command === 'string') {
+    command = command.toLowerCase();
+  }
   if (command.includes('hello my name is')) {
     const words = command.split(' ');
     userName = words[words.length - 1];
@@ -22,7 +24,7 @@ function getReply(command) {
     return `${taskToAdd} added to your todo`;
   } else if (command.includes('from my todo') && command.includes('remove')) {
     const taskToRemove = command.substring(
-      command.indexOf('remove') + 7,
+      command.indexOf('remove') + 'remove '.length,
       command.lastIndexOf(' from my todo')
     );
     for (const item of todo) {
@@ -41,6 +43,27 @@ function getReply(command) {
         todo.slice(0, -1).join(', ') + ' and ' + todo.slice(-1)
       }.`;
     }
+  } else if (command === 'what day is it today?') {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return today.toLocaleDateString('en-GB', options);
+  } else if (command.includes('what is')) {
+    const mathCommand = command.substring(command.indexOf('what is ') + 8);
+    return `${mathCommand} is ${eval(mathCommand)}`;
+  } else if (
+    command.includes('set a timer for') &&
+    command.includes('minutes')
+  ) {
+    const min = +command.substring(
+      command.indexOf('set a timer for') + 'set a timer for '.length,
+      command.lastIndexOf(' minutes')
+    );
+    setTimeout(function () {
+      alert('Time is up');
+    }, min * 60000);
+    return `Timer set for ${min} minutes`;
+  } else if (command === 'what time is it?') {
+    return new Date().getHours() + ':' + new Date().getMinutes();
   }
 }
 
@@ -57,3 +80,7 @@ console.log(getReply('Add dancing to my todo'));
 console.log(getReply('Add singing in the shower to my todo'));
 console.log(todo);
 console.log(getReply('what is on my todo?'));
+console.log(getReply('what day is it today?'));
+console.log(getReply('what is 3 + 10 / 2'));
+console.log(getReply('set a timer for 2 minutes'));
+console.log(getReply('what time is it?'));
