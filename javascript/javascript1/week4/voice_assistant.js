@@ -36,7 +36,7 @@ function getReply(command) {
   } else if (command === 'what is on my todo?') {
     if (todo.length === 1) {
       return `You have 1 todo - ${todo[0]}`;
-    } else if (todo.length === 1) {
+    } else if (todo.length === 0) {
       return 'You have nothing on your todo';
     } else {
       return `You have ${todo.length} todos - ${
