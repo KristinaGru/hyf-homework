@@ -45,5 +45,26 @@ function generateSpiritAnimal() {
 const spiritAnimalSection = document.getElementById('spirit-animal');
 const spiritAnimalParagraph = document.createElement('p');
 const nameBtn = document.getElementById('name-btn');
-
+const input = document.getElementById('name');
 nameBtn.addEventListener('click', generateSpiritAnimal);
+
+const radios = document.querySelectorAll('input[name="generator"]');
+
+for (let i = 0; i < radios.length; i++) {
+  radios[i].addEventListener('click', function () {
+    const radio = this.value;
+    if (radio === 'hover') {
+      input.addEventListener('mouseover', generateSpiritAnimal);
+      input.removeEventListener('input', generateSpiritAnimal);
+      nameBtn.removeEventListener('click', generateSpiritAnimal);
+    } else if (radio === 'write') {
+      input.addEventListener('input', generateSpiritAnimal);
+      nameBtn.removeEventListener('click', generateSpiritAnimal);
+      input.removeEventListener('mouseover', generateSpiritAnimal);
+    } else {
+      nameBtn.addEventListener('click', generateSpiritAnimal);
+      input.removeEventListener('mouseover', generateSpiritAnimal);
+      input.removeEventListener('input', generateSpiritAnimal);
+    }
+  });
+}

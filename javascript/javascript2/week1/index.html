@@ -5,10 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS2 week 1 homework</title>
+    <style>
+      section {
+        max-width: 30rem;
+        margin: 2rem auto;
+        border: 1px solid rgb(70, 66, 66);
+        padding: 2rem;
+      }
+    </style>
   </head>
   <body>
     <section id="spirit-animal">
       <h1>Spirit animal name generator</h1>
+      <h4>When the spirit animal should be created?</h4>
+      <input type="radio" name="generator" value="click" checked /> when the
+      button is clicked <br />
+      <input type="radio" name="generator" value="hover" /> when the input is
+      hovered <br />
+      <input type="radio" name="generator" value="write" /> when text is written
+      in the input field
       <h4>Write your name</h4>
       <input type="text" placeholder="Name" id="name" />
       <button id="name-btn">Generate spirit animal name</button>
