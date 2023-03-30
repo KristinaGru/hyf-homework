@@ -8,7 +8,7 @@ const animalAdjective = [
   'friendly',
   'precious',
   'gentle',
-  'charming',
+  'charming'
 ];
 
 const animalNoun = [
@@ -21,7 +21,7 @@ const animalNoun = [
   'koala',
   'penguin',
   'cat',
-  'dog',
+  'dog'
 ];
 
 function getSpiritAnimal(adjective, noun) {

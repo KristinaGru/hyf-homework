@@ -23,7 +23,7 @@ window.getAvailableProducts = function () {
       'Wet',
       'Green',
       'Sloppy',
-      'Dirty',
+      'Dirty'
     ];
     const productNames = [
       'Carrot',
@@ -40,7 +40,7 @@ window.getAvailableProducts = function () {
       'Toothbrush',
       'Computer',
       'Nokia',
-      'Cologne',
+      'Cologne'
     ];
 
     let chosenProductName = getRandomItem(productNames);
@@ -64,7 +64,7 @@ window.getAvailableProducts = function () {
       id: `${name}${getRandomInt(0, 100000)}`,
       name,
       price: getRandomInt(0, 10000),
-      rating: getRandomInt(1, 10),
+      rating: getRandomInt(1, 10)
     };
   });
 

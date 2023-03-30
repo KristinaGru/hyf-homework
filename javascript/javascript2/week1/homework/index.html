@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS2 week 1 homework</title>
+    <link rel="stylesheet" type="text/css" href="CSS/main.css" />
+    <script src="JS/spirit_animal.js" defer></script>
+    <script src="JS/danish_letters.js" defer></script>
+  </head>
+  <body>
+    <form action="/" method="get" id="spirit-animal">
+      <h1>Spirit animal name generator</h1>
+      <h4>When the spirit animal should be created?</h4>
+      <input type="radio" name="generator" value="click" id="click" checked />
+      <label for="click">when the button is clicked</label> <br />
+      <input type="radio" name="generator" value="hover" id="hover" />
+      <label for="hover">when the input is hovered</label> <br />
+      <input type="radio" name="generator" value="write" id="write" />
+      <label for="write">when text is written in the input field</label> <br />
+      <h4>Write your name</h4>
+      <input type="text" placeholder="Name" id="name" />
+      <button type="button" id="name-btn">Generate spirit animal name</button>
+    </form>
+  </body>
+</html>
