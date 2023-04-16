@@ -1,0 +1,108 @@
+<head>
+  <title>HyfBay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="CSS/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap"
+    rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+  <script src="JS/hyfBayHelpers.js" defer></script>
+  <script src="JS/main.js" defer></script>
+  <script src="JS/filterProducts.js" defer></script>
+</head>
+<body>
+  <nav>
+    <span>
+      <a href="#"><img src="Images/logoipsum-295.svg" class="logo" /></a>
+    </span>
+    <span>
+      <ul>
+        <li class="nav">
+          <a href="#"><i class="fa-solid fa-circle-question"></i></a>
+        </li>
+        <li class="nav">
+          <a href="#"><i class="fa-solid fa-circle-user"></i></a>
+        </li>
+        <li class="nav">
+          <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+        </li>
+      </ul>
+    </span>
+  </nav>
+  <section class="hero">
+    <h1>HYF BAY</h1>
+    <a href="#search" class="shop-btn">Shop now</a>
+  </section>
+  <section class="search">
+    <input type="text" placeholder="Search for a product" id="search" />
+    <input type="text" placeholder="Set maximum price" id="price" />
+    <input type="text" placeholder="Set minimum rating" id="rating" />
+    <select id="sort">
+      <option disabled selected value>-- sort products --</option>
+      <option value="top-rated">Top rated</option>
+      <option value="alphabetical">Alphabetical</option>
+      <option value="price-up">Price low to high</option>
+      <option value="price-down">Price high to low</option>
+    </select>
+  </section>
+  <main></main>
+  <footer>
+    <span>
+      <h2>Find us</h2>
+      <ul class="footer">
+        <li>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144001.63111826882!2d12.42901526289375!3d55.67115696135434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652533c5c803d23%3A0x4dd7edde69467b8!2sKopenhaga!5e0!3m2!1slt!2sdk!4v1681377224645!5m2!1slt!2sdk"
+            width="200"
+            height="150"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </li>
+        <li>Address</li>
+      </ul>
+    </span>
+    <span>
+      <h2>About us</h2>
+      <ul class="footer">
+        <li><a href="#">Mission</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">HyfBay</a></li>
+      </ul>
+    </span>
+    <span>
+      <h2>Navigation</h2>
+      <ul class="footer">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Shopping cart</a></li>
+      </ul>
+    </span>
+    <span>
+      <h2>Follow us</h2>
+      <ul class="footer">
+        <li>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </li>
+      </ul>
+    </span>
+  </footer>
+</body>
