@@ -33,19 +33,21 @@ ratingInput.addEventListener('input', () => {
   }
 });
 
-const sort = document.getElementById('sort');
-sort.addEventListener('change', () => {
-  if (sort.value === 'top-rated') {
+function sortProducts(value) {
+  if (value === 'top-rated') {
     main.innerText = '';
     renderProducts(products.sort((a, b) => b.rating - a.rating));
-  } else if (sort.value === 'alphabetical') {
+  } else if (value === 'alphabetical') {
     main.innerText = '';
     renderProducts(products.sort((a, b) => a.name.localeCompare(b.name)));
-  } else if (sort.value === 'price-up') {
+  } else if (value === 'price-up') {
     main.innerText = '';
     renderProducts(products.sort((a, b) => a.price - b.price));
-  } else if (sort.value === 'price-down') {
+  } else if (value === 'price-down') {
     main.innerText = '';
     renderProducts(products.sort((a, b) => b.price - a.price));
   }
-});
+}
+
+const sort = document.getElementById('sort');
+sort.addEventListener('change', () => sortProducts(sort.value));
