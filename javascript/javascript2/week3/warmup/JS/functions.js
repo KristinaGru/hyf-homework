@@ -27,16 +27,39 @@ function planetlogFunction(callback) {
 planetlogFunction(earthLogger);
 planetlogFunction(saturnLogger);
 
-// 5.
+// 5. & 6.
 let coordinates;
+function errorCallback() {
+  alert('Please enable location access');
+}
+const mapOptions = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
 function getLocation() {
-  navigator.geolocation.getCurrentPosition((position) => {
-    coordinates = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    };
-    console.log(coordinates);
-  });
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      coordinates = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      console.log(coordinates);
+      let map;
+
+      async function initMap() {
+        const { Map } = await google.maps.importLibrary('maps');
+        map = new Map(document.getElementById('map'), {
+          center: coordinates,
+          zoom: 16
+        });
+      }
+
+      initMap();
+    },
+    errorCallback,
+    mapOptions
+  );
 }
 locationBtn = document.getElementById('locationBtn');
 locationBtn.addEventListener('click', getLocation);
