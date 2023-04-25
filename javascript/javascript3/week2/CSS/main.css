@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background-image: url(../Images/jason-leung-SAYzxuS1O3M-unsplash.jpg);
+  background-image: url('../Images/jason-leung-SAYzxuS1O3M-unsplash.jpg');
   display: flex;
   flex-direction: column;
   justify-content: center;
