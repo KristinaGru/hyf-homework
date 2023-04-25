@@ -5,14 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS3 week2 homework</title>
+    <link rel="stylesheet" type="text/css" href="CSS/main.css" />
     <script src="JS/main.js" defer></script>
   </head>
   <body>
     <div id="exchanger">
-      <input type="number" placeholder="Enter amount" />
-      <select id="from"></select>
-      <select id="to"></select>
-      <span id="result"></span>
+      <h1>Currency Exchanger</h1>
+      <div class="row">
+        <label
+          >Amount
+          <input type="number" id="amount" placeholder="Enter amount" />
+        </label>
+        <label
+          >From
+          <select id="from"></select>
+        </label>
+        <label
+          >To
+          <select id="to"></select>
+        </label>
+      </div>
+      <div id="result"></div>
     </div>
   </body>
 </html>
