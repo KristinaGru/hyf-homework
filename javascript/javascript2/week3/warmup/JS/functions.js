@@ -79,11 +79,7 @@ window.addEventListener('dblclick', () => {
 
 // 9.
 function jokeCreator(boolean, callbackTrue, callbackFalse) {
-  if (boolean) {
-    callbackTrue();
-  } else {
-    callbackFalse();
-  }
+  boolean ? callbackTrue() : callbackFalse();
 }
 
 function logFunnyJoke() {

@@ -9,7 +9,14 @@ let sScore = 0;
 let lScore = 0;
 
 function keepScore(e) {
-  e.key === 's' ? sScore++ : e.key === 'l' ? lScore++ : null;
+  switch (e.key) {
+    case 's':
+      sScore++;
+      break;
+    case 'l':
+      lScore++;
+      break;
+  }
   playerOne.innerText = sScore;
   playerTwo.innerText = lScore;
 }
