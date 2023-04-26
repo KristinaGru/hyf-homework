@@ -20,7 +20,6 @@ async function getRates() {
 }
 
 async function createDropdown(select, defaultCurrency) {
-  await getRates();
   currencies.forEach((currency) => {
     const option = document.createElement('option');
     option.innerText = currency;
@@ -33,19 +32,19 @@ async function createDropdown(select, defaultCurrency) {
 }
 
 async function calculateCurrency() {
-  await getRates();
   const amount = +input.value;
   const from = currencyFrom.value;
   const to = currencyTo.value;
   const fromRate = rates[from];
   const toRate = rates[to];
-  result.innerText = `${
-    Math.round(((amount * toRate) / fromRate) * 100) / 100
-  } ${to}`;
+  result.innerText = `${((amount * toRate) / fromRate).toFixed(2)} ${to}`;
 }
 
-createDropdown(currencyFrom, 'EUR');
-createDropdown(currencyTo, 'DKK');
+(async () => {
+  await getRates();
+  createDropdown(currencyFrom, 'EUR');
+  createDropdown(currencyTo, 'DKK');
+})();
 
 currencyFrom.addEventListener('change', calculateCurrency);
 currencyTo.addEventListener('change', calculateCurrency);
