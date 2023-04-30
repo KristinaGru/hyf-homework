@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+html {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  background-image: url(../Images/jason-leung-SAYzxuS1O3M-unsplash.jpg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+#exchanger {
+  width: 80vw;
+  border-radius: 10px;
+  padding: 2rem;
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.76);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.877);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+label:first-of-type {
+  flex: 2;
+}
+
+@media screen and (max-width: 400px) {
+  label:first-of-type {
+    width: 80vw;
+  }
+}
+
+label > * {
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+label > *:focus {
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#result {
+  padding-top: 1.5rem;
+  font-weight: 700;
+}
