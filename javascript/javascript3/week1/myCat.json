@@ -1,0 +1,19 @@
+{
+  "name": "Venta",
+  "age": 4,
+  "color": "black",
+  "isGirl": true,
+  "hobbies": ["scratching", "eating"],
+  "owners": [
+    {
+      "name": "Kristina",
+      "age": 26,
+      "hobbies": ["coding", "eating"]
+    },
+    {
+      "name": "Ernestas",
+      "age": 29,
+      "hobbies": ["biking", "eating"]
+    }
+  ]
+}
