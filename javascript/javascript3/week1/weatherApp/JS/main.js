@@ -41,18 +41,17 @@ window.onload = async () => {
       .padStart(2, '0')}`;
   }
 
-  console.log(
-    'The chosen city, Temperature, Icon for the weather type, Wind speed, How clowdy it is, When sunrise and sunset is'
-  );
   function displayWeather(json) {
     console.log(json);
     display.innerText = '';
-    const city = document.createElement('h2');
+    const city = document.createElement('h1');
     city.innerText = json.name;
 
     const displayRow = document.createElement('div');
     const leftDiv = document.createElement('div');
+    leftDiv.classList.add('left');
     const rightDiv = document.createElement('div');
+    rightDiv.classList.add('right');
 
     const typeIcon = document.createElement('img');
     typeIcon.src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
@@ -74,8 +73,8 @@ window.onload = async () => {
     display.appendChild(city);
     leftDiv.appendChild(typeIcon);
     leftDiv.appendChild(temp);
-    leftDiv.appendChild(feel);
     displayRow.appendChild(leftDiv);
+    rightDiv.appendChild(feel);
     rightDiv.appendChild(wind);
     rightDiv.appendChild(clouds);
     rightDiv.appendChild(sunrise);

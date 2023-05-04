@@ -7,12 +7,19 @@
     <title>Weather app</title>
     <script src="JS/main.js" defer></script>
     <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
   <body>
     <div id="input">
       <input type="text" placeholder="City" />
-      <button type="button" id="city">Search</button>
-      <button type="button" id="user-location">Location</button>
+      <button type="button" id="city">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button type="button" id="user-location">
+        <i class="fa-solid fa-location-dot"></i>
+      </button>
     </div>
     <section id="display"></section>
     <div id="map"></div>
