@@ -10,8 +10,42 @@
     <script src="JS/main.js" defer></script>
   </head>
   <body>
-    <input type="text" placeholder="https://example.com/" />
-    <button type="button">Get a screenchot</button>
+    <button type="button" id="show-signup">Sign up</button>
+    <button type="button" id="show-login">Log in</button>
+    <form id="login-form" hidden>
+      <input
+        type="text"
+        placeholder="Enter Username"
+        name="uname"
+        id="login-name"
+        required />
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="pwd"
+        id="login-pwd"
+        required />
+      <button type="button" id="login">Login</button>
+      <button type="button" id="close-login">Close</button>
+    </form>
+    <form id="signup-form" hidden>
+      <input
+        type="text"
+        placeholder="Enter Username"
+        name="uname"
+        id="signup-name"
+        required />
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="pwd"
+        id="signup-pwd"
+        required />
+      <button type="button" id="signup">Sign up</button>
+      <button type="button" id="close-signup">Close</button>
+    </form>
+    <input type="text" id="get-input" placeholder="https://example.com/" />
+    <button type="button" id="get-btn">Get a screenshot</button>
     <div id="img"></div>
     <div id="display"></div>
   </body>
