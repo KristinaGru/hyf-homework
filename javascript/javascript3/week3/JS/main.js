@@ -2,6 +2,7 @@ const input = document.getElementById('get-input');
 const btn = document.getElementById('get-btn');
 const display = document.getElementById('display');
 const userName = document.getElementById('login-name');
+const imgWrap = document.getElementById('img');
 let logedIn = false;
 
 async function getScreenshot(url) {
@@ -17,22 +18,29 @@ async function getScreenshot(url) {
   try {
     const response = await fetch(APIurl, options);
     const result = await response.json();
+    console.log(response.status);
+    if (response.status === 422 || response.status === 404) {
+      alert('Please enter a valid url');
+    } else if (response.status >= 400) {
+      throw new Error();
+    }
     return result;
   } catch (error) {
+    alert('Something went wrong. Please try again');
     console.error(error);
   }
 }
 
-function createBtn(text) {
+function createBtn(text, appendTo) {
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.innerText = text;
-  display.appendChild(btn);
+  appendTo.appendChild(btn);
   return btn;
 }
 
 function saveScreenshot(url) {
-  const btn = createBtn('Save Screenshot');
+  const btn = createBtn('Save Screenshot', imgWrap);
   btn.addEventListener('click', async () => {
     const screenshot = { 'url': url };
     try {
@@ -44,6 +52,7 @@ function saveScreenshot(url) {
           body: JSON.stringify(screenshot)
         }
       );
+      alert('Screenshot saved');
     } catch (err) {
       console.error(err);
     }
@@ -51,25 +60,30 @@ function saveScreenshot(url) {
 }
 
 function getScreenshots() {
-  const btn = createBtn('Show saved screenshots');
-  const dataEl = document.createElement('div');
+  const btn = createBtn('Show saved screenshots', display);
+  const screenshots = document.createElement('div');
+  screenshots.classList.add('screenshots');
   btn.addEventListener('click', async () => {
     try {
       const res = await fetch(
         `https://crudcrud.com/api/${crudKey}/screenshots-${userName.value}`
       );
       const data = await res.json();
-      dataEl.innerText = '';
+      screenshots.innerText = '';
       data.forEach((element) => {
         const wrap = document.createElement('div');
         wrap.classList.add('save');
+        const link = document.createElement('a');
         const item = document.createElement('img');
         item.src = element.url;
-        wrap.appendChild(item);
+        link.href = element.url;
+        link.target = '_blank';
+        link.appendChild(item);
+        wrap.appendChild(link);
         deleteScreenshot(wrap, element._id);
-        dataEl.appendChild(wrap);
+        screenshots.appendChild(wrap);
       });
-      display.appendChild(dataEl);
+      display.appendChild(screenshots);
     } catch (err) {
       console.error(err);
     }
@@ -80,6 +94,7 @@ function deleteScreenshot(el, id) {
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.innerText = '🗑️';
+  btn.classList.add('delete');
   el.appendChild(btn);
   btn.addEventListener('click', async () => {
     try {
@@ -98,40 +113,49 @@ function deleteScreenshot(el, id) {
 
 function displayScreenshot(url) {
   const img = document.createElement('img');
-  const urlEl = document.createElement('a');
-  const imgWrap = document.getElementById('img');
-  display.innerText = '';
+  const link = document.createElement('a');
   imgWrap.innerText = '';
-  urlEl.href = url;
-  urlEl.innerText = 'Image link';
+  link.href = url;
+  link.setAttribute('download', '');
   img.src = url;
-  imgWrap.appendChild(img);
-  display.appendChild(urlEl);
+  link.appendChild(img);
+  imgWrap.appendChild(link);
 }
 
 btn.addEventListener('click', async () => {
+  const loading = document.createElement('img');
+  loading.src =
+    'https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif';
+  loading.classList.add('background');
+  imgWrap.appendChild(loading);
   const data = (await getScreenshot(input.value)).screenshotUrl;
   displayScreenshot(data);
   if (logedIn) {
     saveScreenshot(data);
-    getScreenshots();
   }
 });
 
-function showForm(formId, closeId) {
-  const form = document.getElementById(formId);
+// Signup & login
+
+const loginForm = document.getElementById('login-form');
+const singupForm = document.getElementById('signup-form');
+const loginBtn = document.getElementById('show-login');
+const signupBtn = document.getElementById('show-signup');
+
+function showForm(form, closeId, closeForm) {
+  closeForm.hidden = true;
   form.hidden = false;
   document
     .getElementById(closeId)
     .addEventListener('click', () => (form.hidden = true));
 }
 
-document.getElementById('show-signup').addEventListener('click', () => {
-  showForm('signup-form', 'close-signup');
+signupBtn.addEventListener('click', () => {
+  showForm(singupForm, 'close-signup', loginForm);
 });
 
-document.getElementById('show-login').addEventListener('click', () => {
-  showForm('login-form', 'close-login');
+loginBtn.addEventListener('click', () => {
+  showForm(loginForm, 'close-login', singupForm);
 });
 
 document.getElementById('signup').addEventListener('click', async () => {
@@ -143,13 +167,13 @@ document.getElementById('signup').addEventListener('click', async () => {
       'pwd': userPwd
     };
     try {
-      const res = await fetch(`https://crudcrud.com/api/${crudKey}/users`, {
+      await fetch(`https://crudcrud.com/api/${crudKey}/users`, {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         method: 'POST',
         body: JSON.stringify(user)
       });
-      const data = await res.json();
-      console.log(data);
+      singupForm.hidden = true;
+      alert('Successfully signed up. Please log in');
     } catch (err) {
       console.error(err);
     }
@@ -164,10 +188,17 @@ document.getElementById('login').addEventListener('click', async () => {
     try {
       const res = await fetch(`https://crudcrud.com/api/${crudKey}/users`);
       const data = await res.json();
-      console.log(data);
       data.forEach((element) => {
         if (element.name === userName.value && element.pwd === userPwd) {
           logedIn = true;
+          getScreenshots();
+          loginForm.hidden = true;
+          loginBtn.hidden = true;
+          signupBtn.hidden = true;
+          alert('Successfully logged in');
+          const logOut = document.getElementById('log-out');
+          logOut.hidden = false;
+          logOut.addEventListener('click', () => location.reload());
         }
       });
     } catch (err) {

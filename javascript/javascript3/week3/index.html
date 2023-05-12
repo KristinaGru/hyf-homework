@@ -10,43 +10,55 @@
     <script src="JS/main.js" defer></script>
   </head>
   <body>
-    <button type="button" id="show-signup">Sign up</button>
-    <button type="button" id="show-login">Log in</button>
-    <form id="login-form" hidden>
-      <input
-        type="text"
-        placeholder="Enter Username"
-        name="uname"
-        id="login-name"
-        required />
-      <input
-        type="password"
-        placeholder="Enter Password"
-        name="pwd"
-        id="login-pwd"
-        required />
-      <button type="button" id="login">Login</button>
-      <button type="button" id="close-login">Close</button>
-    </form>
-    <form id="signup-form" hidden>
-      <input
-        type="text"
-        placeholder="Enter Username"
-        name="uname"
-        id="signup-name"
-        required />
-      <input
-        type="password"
-        placeholder="Enter Password"
-        name="pwd"
-        id="signup-pwd"
-        required />
-      <button type="button" id="signup">Sign up</button>
-      <button type="button" id="close-signup">Close</button>
-    </form>
-    <input type="text" id="get-input" placeholder="https://example.com/" />
-    <button type="button" id="get-btn">Get a screenshot</button>
-    <div id="img"></div>
-    <div id="display"></div>
+    <header>
+      <img src="https://img.logoipsum.com/250.svg" alt="logo" />
+      <div class="buttons">
+        <button type="button" id="show-signup">Sign up</button>
+        <button type="button" id="show-login">Log in</button>
+        <button type="button" id="log-out" hidden>Log out</button>
+      </div>
+    </header>
+    <main>
+      <form id="login-form" hidden>
+        <h2>Welcome back! Please log in</h2>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="uname"
+          id="login-name"
+          required />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="pwd"
+          id="login-pwd"
+          required />
+        <button type="button" id="login">Login</button>
+        <button type="button" id="close-login">x</button>
+      </form>
+      <form id="signup-form" hidden>
+        <h2>Sign up and unlock extra features!</h2>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="uname"
+          id="signup-name"
+          required />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="pwd"
+          id="signup-pwd"
+          required />
+        <button type="button" id="signup">Sign up</button>
+        <button type="button" id="close-signup">x</button>
+      </form>
+      <div class="column">
+        <input type="text" id="get-input" placeholder="https://example.com/" />
+        <button type="button" id="get-btn">Get a screenshot</button>
+      </div>
+      <div id="img"></div>
+      <div id="display"></div>
+    </main>
   </body>
 </html>
