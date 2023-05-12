@@ -199,6 +199,8 @@ document.getElementById('login').addEventListener('click', async () => {
           const logOut = document.getElementById('log-out');
           logOut.hidden = false;
           logOut.addEventListener('click', () => location.reload());
+        } else {
+          alert('Incorrect user name or password');
         }
       });
     } catch (err) {
