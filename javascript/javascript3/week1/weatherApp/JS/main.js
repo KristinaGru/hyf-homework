@@ -13,7 +13,7 @@ window.onload = async () => {
   async function fetchCoordsWeather(lat, lon) {
     return (
       await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=868a2cba97bb490273667bbf1f1c4b90&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`
       )
     ).json();
   }
@@ -22,7 +22,7 @@ window.onload = async () => {
     try {
       return (
         await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=868a2cba97bb490273667bbf1f1c4b90&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}&units=metric`
         )
       ).json();
     } catch (err) {
@@ -32,55 +32,32 @@ window.onload = async () => {
   }
 
   function convertTime(unix) {
-    return `${new Date(unix * 1000)
-      .getHours()
-      .toString()
-      .padStart(2, '0')}:${new Date(unix * 1000)
-      .getMinutes()
-      .toString()
-      .padStart(2, '0')}`;
+    const date = new Date(unix * 1000);
+    const options = { hour: '2-digit', minute: '2-digit' };
+    return new Intl.DateTimeFormat('en-US', options).format(date);
   }
 
   function displayWeather(json) {
-    console.log(json);
-    display.innerText = '';
-    const city = document.createElement('h1');
+    const city = document.querySelector('h1');
+    const typeIcon = document.getElementById('type-icon');
+    const temp = document.getElementById('temp');
+    const feel = document.getElementById('feel');
+    const wind = document.getElementById('wind');
+    const clouds = document.getElementById('clouds');
+    const sunrise = document.getElementById('sunrise');
+    const sunset = document.getElementById('sunset');
+    const rightDiv = document.getElementById('right');
+
+    rightDiv.hidden = false;
     city.innerText = json.name;
-
-    const displayRow = document.createElement('div');
-    const leftDiv = document.createElement('div');
-    leftDiv.classList.add('left');
-    const rightDiv = document.createElement('div');
-    rightDiv.classList.add('right');
-
-    const typeIcon = document.createElement('img');
-    typeIcon.src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
+    typeIcon.src = `https://openweathermap.org/img/wn/${json.weather[0].icon}.png`;
     typeIcon.alt = `icon of a ${json.weather[0].description}`;
-    const temp = document.createElement('h3');
     temp.innerText = `${Math.round(json.main.temp)}°C`;
-    const feel = document.createElement('div');
     feel.innerText = `Feels like ${Math.round(json.main.feels_like)}°C`;
-
-    const wind = document.createElement('div');
     wind.innerText = `${json.wind.speed} m/s`;
-    const clouds = document.createElement('div');
     clouds.innerText = `${json.clouds.all}% cloudiness`;
-    const sunrise = document.createElement('div');
     sunrise.innerText = `Sunrise: ${convertTime(json.sys.sunrise)}`;
-    const sunset = document.createElement('div');
     sunset.innerText = `Sunset: ${convertTime(json.sys.sunset)}`;
-
-    display.appendChild(city);
-    leftDiv.appendChild(typeIcon);
-    leftDiv.appendChild(temp);
-    displayRow.appendChild(leftDiv);
-    rightDiv.appendChild(feel);
-    rightDiv.appendChild(wind);
-    rightDiv.appendChild(clouds);
-    rightDiv.appendChild(sunrise);
-    rightDiv.appendChild(sunset);
-    displayRow.appendChild(rightDiv);
-    display.appendChild(displayRow);
   }
 
   locationBtn.addEventListener('click', async () => {
@@ -92,7 +69,6 @@ window.onload = async () => {
         coordinates.longitude
       );
       displayWeather(coordsJson);
-      console.log(coordinates);
       let map;
       async function initMap() {
         const { Map } = await google.maps.importLibrary('maps');

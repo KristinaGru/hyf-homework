@@ -16,6 +16,7 @@
 
     <!-- Bootstrap + main styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script src="../../keys.js"></script>
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
     <!-- Page Navigation -->
@@ -100,19 +101,19 @@
             <h6 class="section-subtitle">See what your mood is like with</h6>
             <h6 class="section-title mb-4">The Happiness Detector</h6>
 
-            <div class="item" id="happy-icon">
+            <div class="item happy" id="happy-icon">
               <i class="ti-face-smile"></i>
               <div>
                 <h5>Happy</h5>
               </div>
             </div>
-            <div class="item" id="neutral-icon">
+            <div class="item neutral" id="neutral-icon">
               <i class="ti-flickr-alt"></i>
               <div class="mb-0">
                 <h5>Neutral</h5>
               </div>
             </div>
-            <div class="item" id="sad-icon">
+            <div class="item sad" id="sad-icon">
               <i class="ti-face-sad"></i>
               <div class="mb-0">
                 <h5>Sad</h5>
@@ -149,10 +150,10 @@
           </div>
         </div>
         <div
-          class="alert alert-success alert-dismissible fade show"
+          class="alert alert-success happy alert-dismissible fade show"
           role="alert"
           hidden>
-          <span id="happy"></span>
+          <span id="happy" class="happy"></span>
           <button
             type="button"
             class="close"
@@ -162,10 +163,10 @@
           </button>
         </div>
         <div
-          class="alert alert-primary alert-dismissible fade show"
+          class="alert alert-primary sad alert-dismissible fade show"
           role="alert"
           hidden>
-          <span id="sad"></span>
+          <span id="sad" class="sad"></span>
           <button
             type="button"
             class="close"
@@ -175,10 +176,10 @@
           </button>
         </div>
         <div
-          class="alert alert-info alert-dismissible fade show"
+          class="alert alert-info neutral alert-dismissible fade show"
           role="alert"
           hidden>
-          <span id="neutral"></span>
+          <span id="neutral" class="neutral"></span>
           <button
             type="button"
             class="close"
