@@ -1,0 +1,16 @@
+const data = require('../documents.json');
+
+const getDocument = (req, res) => {
+  try {
+    const searchResult = data.find((obj) => +obj.id === +req.params.id);
+    if (searchResult) {
+      res.status(200).json(searchResult);
+    } else {
+      res.status(404).json('Item not found');
+    }
+  } catch (e) {
+    res.status(500).json(e.message);
+  }
+};
+
+module.exports = { getDocument };
