@@ -2,6 +2,10 @@ body {
   background-color: #ffffe6;
 }
 
+*:focus {
+  outline: none;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -10,7 +14,6 @@ body {
   margin-top: 2rem;
   padding: 0 1rem;
   width: clamp(15rem, 30rem, 30rem);
-  /* PATAISYTI!!! */
 }
 
 #root > * {
@@ -22,18 +25,21 @@ p {
   text-align: center;
 }
 
-form {
+form > * {
   height: 2rem;
-  display: inline-flex;
+  display: flex;
   gap: 0.5rem;
 }
 
-input,
-button,
-li {
+.wrapper > *,
+li > input {
   border: 3px solid #d8f6d6;
   background-color: #eefbdd;
   border-radius: 10px;
+}
+
+.wrapper > *:hover {
+  background-color: #d8f6d6;
 }
 
 input[type='text'] {
@@ -55,10 +61,6 @@ li {
   padding: 0.5rem 1rem;
 }
 
-li:hover {
-  background-color: #d8f6d6;
-}
-
 h4 {
   width: 100%;
   display: flex;
@@ -69,11 +71,16 @@ input[type='checkbox']:checked + h4 {
   text-decoration: line-through;
 }
 
-.deleteBtn {
-  font-size: 20px;
+.buttons {
   align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.buttons > * {
+  background: transparent;
   border: none;
-  background-color: transparent;
-  font-weight: bold;
-  color: #ff987e;
+  font-size: 1rem;
 }

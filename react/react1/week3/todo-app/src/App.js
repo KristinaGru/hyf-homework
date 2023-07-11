@@ -14,7 +14,8 @@ function App() {
       const res = await fetch(
         'https://gist.githubusercontent.com/benna100/391eee7a119b50bd2c5960ab51622532/raw'
       );
-      const todos = await res.json();
+      const data = await res.json();
+      const todos = data.map((todo) => ({ ...todo, isEditing: false }));
       setTodoList(todos);
     };
     fetchTodos().catch(console.error);
@@ -22,12 +23,33 @@ function App() {
 
   function addTodo(description, deadline) {
     if (description.trim()) {
-      setTodoList([...todoList, { id: id(), description, deadline }]);
+      setTodoList([
+        ...todoList,
+        { id: id(), description, deadline, isEditing: false }
+      ]);
     }
   }
 
   function deleteTodo(id) {
     setTodoList(todoList.filter((todo) => todo.id !== id));
+  }
+
+  function editTodo(id) {
+    setTodoList(
+      todoList.map((todo) =>
+        todo.id === id ? { ...todo, isEditing: true } : todo
+      )
+    );
+  }
+
+  function updateTodo(id, description, deadline) {
+    setTodoList(
+      todoList.map((todo) =>
+        todo.id === id
+          ? { ...todo, description, deadline, isEditing: false }
+          : todo
+      )
+    );
   }
 
   return (
@@ -36,9 +58,14 @@ function App() {
       <Header />
       <AddTodo addTodo={addTodo} />
       {todoList.length > 0 ? (
-        <TodoList todos={todoList} deleteTodo={deleteTodo} />
+        <TodoList
+          todos={todoList}
+          deleteTodo={deleteTodo}
+          editTodo={editTodo}
+          updateTodo={updateTodo}
+        />
       ) : (
-        'No items...'
+        <p>No items</p>
       )}
     </>
   );
