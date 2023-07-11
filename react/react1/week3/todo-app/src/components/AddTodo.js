@@ -20,9 +20,7 @@ const AddTodo = ({ addTodo }) => {
             onChange={(e) => setDeadline(e.target.value)}></input>
           <button
             type="button"
-            onClick={() => {
-              addTodo(description, deadline);
-            }}
+            onClick={() => addTodo(description, deadline)}
             className="addBtn">
             Add
           </button>

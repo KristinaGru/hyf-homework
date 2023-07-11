@@ -13,7 +13,7 @@ body {
   margin: auto;
   margin-top: 2rem;
   padding: 0 1rem;
-  width: clamp(15rem, 30rem, 30rem);
+  width: clamp(22rem, 30rem, 100%);
 }
 
 #root > * {
@@ -44,6 +44,9 @@ li > input {
 
 input[type='text'] {
   flex: 1;
+}
+
+input {
   padding: 0.5rem;
 }
 
@@ -62,6 +65,7 @@ li {
 }
 
 h4 {
+  margin: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;

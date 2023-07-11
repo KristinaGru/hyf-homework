@@ -22,11 +22,15 @@ function App() {
   }, []);
 
   function addTodo(description, deadline) {
-    if (description.trim()) {
-      setTodoList([
-        ...todoList,
-        { id: id(), description, deadline, isEditing: false }
-      ]);
+    if (new Date(deadline) < new Date(new Date().toDateString())) {
+      alert('The selected deadline cannot be a past date');
+    } else {
+      if (description.trim()) {
+        setTodoList([
+          ...todoList,
+          { id: id(), description, deadline, isEditing: false }
+        ]);
+      }
     }
   }
 
@@ -43,13 +47,21 @@ function App() {
   }
 
   function updateTodo(id, description, deadline) {
-    setTodoList(
-      todoList.map((todo) =>
-        todo.id === id
-          ? { ...todo, description, deadline, isEditing: false }
-          : todo
-      )
-    );
+    if (description.trim()) {
+      setTodoList(
+        todoList.map((todo) =>
+          todo.id === id
+            ? { ...todo, description, deadline, isEditing: false }
+            : todo
+        )
+      );
+    } else {
+      setTodoList(
+        todoList.map((todo) =>
+          todo.id === id ? { ...todo, isEditing: false } : todo
+        )
+      );
+    }
   }
 
   return (

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import TodoWrapper from './TodoWrapper';
+import PropTypes from 'prop-types';
 
 const Todo = ({ todo, deleteTodo, editTodo }) => {
   return (
@@ -26,5 +27,9 @@ const Todo = ({ todo, deleteTodo, editTodo }) => {
     </TodoWrapper>
   );
 };
-
+Todo.propTypes = {
+  todo: PropTypes.object,
+  deleteTodo: PropTypes.func,
+  editTodo: PropTypes.func
+};
 export default Todo;
