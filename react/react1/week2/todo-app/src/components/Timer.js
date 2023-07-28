@@ -8,7 +8,7 @@ const Timer = () => {
     }, 1000);
   }, [seconds]);
 
-  return <p>You have spent {Math.floor(seconds)} seconds on this website</p>;
+  return <p>You have spent {seconds} seconds on this website</p>;
 };
 
 export default Timer;

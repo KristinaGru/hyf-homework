@@ -12,7 +12,7 @@ function App() {
 
   function addTodo(description) {
     if (description.trim()) {
-      setTodoList([...todoList, { id: id(), description }]);
+      setTodoList([...todoList, { id: id(), description: description.trim() }]);
     }
   }
 
