@@ -1,4 +1,6 @@
-const knex = require('knex')({
+import knex from 'knex'
+
+const db = knex({
   client: 'mysql2',
   connection: {
     host: process.env.DB_HOST || '127.0.0.1',
@@ -10,7 +12,7 @@ const knex = require('knex')({
   }
 });
 
-const express = require('express');
+import express from 'express';
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -23,7 +25,7 @@ const contactsAPIRouter = express.Router();
 apiRouter.use('/contacts', contactsAPIRouter);
 
 contactsAPIRouter.get('/', async (req, res) => {
-  let query = knex.select('*').from('contacts');
+  let query = db.select('*').from('contacts');
 
   if ('sort' in req.query) {
     const orderBy = req.query.sort.toString();
