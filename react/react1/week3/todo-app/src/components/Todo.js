@@ -8,13 +8,9 @@ const Todo = ({ todo, deleteTodo, editTodo }) => {
     <TodoWrapper>
       <li>
         <input type="checkbox"></input>
-        {todo.deadline ? (
           <h4>
-            {todo.description} | {todo.deadline}
+            {todo.description} | { todo.deadline ? todo.deadline : 'No deadline'}
           </h4>
-        ) : (
-          <h4>{todo.description} | no deadline</h4>
-        )}
         <div className="buttons">
           <button onClick={() => deleteTodo(todo.id)}>
             <FontAwesomeIcon icon={faTrashCan} />
