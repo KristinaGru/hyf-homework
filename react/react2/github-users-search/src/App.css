@@ -1,0 +1,15 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 15rem;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  text-align: center;
+}
