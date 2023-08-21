@@ -3,3 +3,5 @@ Radish
 Celery
 Cabbage
 Carrot
+Asparagus
+Pumpkin
