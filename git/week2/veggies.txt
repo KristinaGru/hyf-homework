@@ -1,5 +1,5 @@
 Cucumber
 Radish
-Tomato
+Celery
 Cabbage
 Carrot
