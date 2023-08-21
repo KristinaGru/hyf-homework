@@ -1,6 +1,6 @@
 Cucumber
 Radish
-Potato
+Celery
 Cabbage
 Carrot
 Asparagus
