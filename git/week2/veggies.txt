@@ -1,5 +1,7 @@
 Cucumber
 Radish
-Tomato
+Potato
 Cabbage
 Carrot
+Asparagus
+Pumpkin
